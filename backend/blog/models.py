@@ -22,6 +22,7 @@ class Post(models.Model):
     class Meta:
         ordering = ["-publish_date"]
 
+    
     title = models.CharField(max_length=255, unique=True)
     subtitle = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(max_length=255, unique=True)
@@ -31,7 +32,16 @@ class Post(models.Model):
     date_modified = models.DateTimeField(auto_now=True)
     publish_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
+    image = models.ImageField(max_length=255, null=True, upload_to="img/")
 
     author = models.ForeignKey(Profile, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
     
+    def get_image(self):
+        if self.image:
+            return 'http://localhost:8000' + self.image
+        return ''
+            
+        
+        
+        
