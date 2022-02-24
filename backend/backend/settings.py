@@ -134,4 +134,4 @@ GRAPHENE = {
 }
 
 CORS_ORIGIN = False
-CORS_ORIGIN_WHITELIST = ('http://localhost:8080')
+CORS_ORIGIN_WHITELIST = ('http://localhost:8080',)
