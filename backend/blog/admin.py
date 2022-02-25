@@ -1,6 +1,5 @@
 from django.contrib import admin
-
-from blog.models import Profile, Post, Tag
+from blog.models import Profile, Post, Tag, Ingredients
 
 
 @admin.register(Profile)
@@ -12,6 +11,9 @@ class ProfileAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     model = Tag
 
+@admin.register(Ingredients)
+class IngredientsAdmin(admin.ModelAdmin):
+    model = Ingredients
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -48,5 +50,7 @@ class PostAdmin(admin.ModelAdmin):
             "subtitle",
         )
     }
+
+    
     date_hierarchy = "publish_date"
     save_on_top = True

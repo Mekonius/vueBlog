@@ -18,6 +18,14 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+class Ingredients(models.Model):
+    name = models.CharField(max_length=100, unique=False)
+    Amount = models.DecimalField(max_digits=3, decimal_places=1)
+    Danger = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     class Meta:
         ordering = ["-publish_date"]
@@ -33,6 +41,8 @@ class Post(models.Model):
     publish_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
     image = models.ImageField(max_length=255, null=True, upload_to="img/")
+
+    ingredients = models.ManyToManyField(Ingredients, blank=True)
 
     author = models.ForeignKey(Profile, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)

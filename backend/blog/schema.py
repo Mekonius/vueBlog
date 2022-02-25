@@ -24,6 +24,10 @@ class TagType(DjangoObjectType):
     class Meta:
         model = models.Tag
 
+class Ingredients(DjangoObjectType):
+    class Meta:
+        model = models.Ingredients
+
 
 class Query(graphene.ObjectType):
     all_posts = graphene.List(PostType)
@@ -31,6 +35,7 @@ class Query(graphene.ObjectType):
     post_by_slug = graphene.Field(PostType, slug=graphene.String())
     posts_by_author = graphene.List(PostType, username=graphene.String())
     posts_by_tag = graphene.List(PostType, tag=graphene.String())
+    posts_by_ingredients = graphene.List(PostType, tag=graphene.String())
 
     def resolve_all_posts(root, info):
         return (
@@ -64,6 +69,13 @@ class Query(graphene.ObjectType):
             .select_related("author")
             .filter(tags__name__iexact=tag)
         )
+
+    def resolve_posts_by_ingredients(root, info, ingredients):
+        return (
+        models.Post.objects.prefetch_related("ingredients")
+        .select_related("author")
+        .filter(ingredients__name__iexact=ingredients)
+    )
 
 
 schema = graphene.Schema(query=Query)

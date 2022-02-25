@@ -5,8 +5,14 @@
     <div>{{ displayableDate(post.publishDate) }}</div>
     <p class="post__description">{{ post.metaDescription }}</p>
     <article>
-        <img v-bind:src="'http://127.0.0.1:8000/media/' +  post.image" alt="test" />
+        <img width="200" v-bind:src="'http://127.0.0.1:8000/media/' +  post.image" alt="test" />
+        <br />
       {{ post.body }}
+      <li v-for="item in ingredients" :key="item.name">
+        <div>
+          {{item.name}}
+        </div>
+      </li>
     </article>
     <ul>
       <li class="post__tags" v-for="tag in post.tags" :key="tag.name">
@@ -49,6 +55,9 @@ export default {
             slug
             body
             image
+            ingredients{
+              name
+            }
             author {
               user {
                 username
