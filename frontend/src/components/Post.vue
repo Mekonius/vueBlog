@@ -7,12 +7,14 @@
     <article>
         <img width="200" v-bind:src="'http://127.0.0.1:8000/media/' +  post.image" alt="test" />
         <br />
-      {{ post.body }}
-      <li v-for="item in ingredients" :key="item.name">
+      {{ post.body }} 
+      <ul>
+      <li v-for="ingredient in post.ingredients" :key="ingredient.name">
         <div>
-          {{item.name}}
+        <router-link :to="`/ingredient/${ingredient.name}`">#{{ ingredient.name }}</router-link>
         </div>
       </li>
+      </ul>
     </article>
     <ul>
       <li class="post__tags" v-for="tag in post.tags" :key="tag.name">
