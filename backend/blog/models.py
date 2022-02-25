@@ -26,6 +26,15 @@ class Ingredients(models.Model):
     def __str__(self):
         return self.name
 
+class Brand(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    
+    def __str__(self):
+        return self.name
+    
+class Series(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    
 class Post(models.Model):
     class Meta:
         ordering = ["-publish_date"]
@@ -41,7 +50,10 @@ class Post(models.Model):
     publish_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
     image = models.ImageField(max_length=255, null=True, upload_to="img/")
-
+    volume = models.IntegerField(null=True, blank=True)
+    brand = models.ManyToManyField(Brand, blank=True)
+    series = models.ManyToManyField(Series, blank=True)
+    
     ingredients = models.ManyToManyField(Ingredients, blank=True)
 
     author = models.ForeignKey(Profile, on_delete=models.PROTECT)

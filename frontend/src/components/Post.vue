@@ -5,20 +5,33 @@
     <div>{{ displayableDate(post.publishDate) }}</div>
     <p class="post__description">{{ post.metaDescription }}</p>
     <article>
-        <img width="200" v-bind:src="'http://127.0.0.1:8000/media/' +  post.image" alt="test" />
-        <br />
-      {{ post.body }} 
+      <img
+        width="200"
+        v-bind:src="'http://127.0.0.1:8000/media/' + post.image"
+        alt="test"
+      />
+      <br />
+      {{ post.body }}
       <ul>
-      <li v-for="ingredient in post.ingredients" :key="ingredient.name">
-        <div>
-        <router-link :to="`/ingredient/${ingredient.name}`">#{{ ingredient.name }}</router-link>
-        </div>
-      </li>
+        <li v-for="ingredient in post.ingredients" :key="ingredient.name">
+          <div>
+            <router-link :to="`/ingredient/${ingredient.name}`"
+              >#{{ ingredient.name }}</router-link
+            >
+          </div>
+        </li>
       </ul>
+      <p>Volume: {{ post.volume }} ml</p>
     </article>
     <ul>
       <li class="post__tags" v-for="tag in post.tags" :key="tag.name">
         <router-link :to="`/tag/${tag.name}`">#{{ tag.name }}</router-link>
+      </li>
+      <li class="post__tags" v-for="b in post.brand" :key="b.brand">
+        <router-link :to="`/brand/${b.name}`">#{{ b.name}}</router-link>
+      </li>
+        <li class="post__tags" v-for="seriesItem in post.series" :key="seriesItem.brand">
+        <router-link :to="`/seriesItem/${seriesItem.name}`">#{{ seriesItem.name}}</router-link>
       </li>
     </ul>
   </div>
@@ -57,7 +70,14 @@ export default {
             slug
             body
             image
-            ingredients{
+            volume
+            brand {
+              name
+            }
+            series{
+              name
+            }
+            ingredients {
               name
             }
             author {

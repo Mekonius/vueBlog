@@ -1,11 +1,10 @@
 from django.contrib import admin
-from blog.models import Profile, Post, Tag, Ingredients
+from blog.models import Profile, Post, Tag, Ingredients, Brand, Series
 
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     model = Profile
-
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
@@ -14,6 +13,13 @@ class TagAdmin(admin.ModelAdmin):
 @admin.register(Ingredients)
 class IngredientsAdmin(admin.ModelAdmin):
     model = Ingredients
+    
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    model = Brand
+@admin.register(Series)
+class BrandAdmin(admin.ModelAdmin):
+    model = Series
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
