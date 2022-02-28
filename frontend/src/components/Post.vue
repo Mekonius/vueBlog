@@ -27,8 +27,8 @@
       <li class="post__tags" v-for="tag in post.tags" :key="tag.name">
         <router-link :to="`/tag/${tag.name}`">#{{ tag.name }}</router-link>
       </li>
-      <li class="post__tags" v-for="b in post.brand" :key="b.brand">
-        <router-link :to="`/brand/${b.name}`">#{{ b.name}}</router-link>
+      <li class="post__tags" v-for="item in post.brand" :key="item.brand">
+        <router-link :to="`/brand/${item.name}`">#{{ item.name}}</router-link>
       </li>
         <li class="post__tags" v-for="seriesItem in post.series" :key="seriesItem.brand">
         <router-link :to="`/seriesItem/${seriesItem.name}`">#{{ seriesItem.name}}</router-link>
