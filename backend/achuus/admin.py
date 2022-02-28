@@ -4,6 +4,9 @@ from django.contrib import admin
 from django.contrib.auth.models import Group, User
 from .models import Achuu_Profile
 
+class ProfileInLine(admin.StackedInline):
+    model = Achuu_Profile
+
 class UserAdmin(admin.ModelAdmin):
     Model = User
     #Only display the "username field"
@@ -14,6 +17,5 @@ admin.site.register(User, UserAdmin)
     
 
 
-admin.site.register(Achuu_Profile)
 admin.site.unregister(Group)
 
