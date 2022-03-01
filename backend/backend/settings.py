@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'blog',
     'corsheaders',
-    'achuus'
+    'achuus.apps.AchuusConfig',
 ]
 
 MIDDLEWARE = [
