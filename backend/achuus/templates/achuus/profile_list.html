@@ -1,5 +1,3 @@
-<!-- dwitter/templates/dwitter/profile_list.html -->
-
 {% extends 'base.html' %}
 
 {% block content %}
@@ -10,7 +8,7 @@
 
     <div class="block">
       <div class="card">
-        <a href="{% url 'achuus:profile' profile.id %}">
+        <a href="{% url 'achuus:achuuProfile' profile.id %}">
           <div class="card-content">
             <div class="media">
               <div class="media-left">

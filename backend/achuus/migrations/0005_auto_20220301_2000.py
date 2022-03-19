@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='achuu_profile',
             name='follows',
-            field=models.ManyToManyField(blank=True, related_name='followed_by', to='achuus.Achuu_Profile'),
+            field=models.ManyToManyField(blank=True, related_name='followed_by', to='achuus.AchuuProfile'),
         ),
     ]
